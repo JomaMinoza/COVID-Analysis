@@ -18,7 +18,7 @@ The file used for the analysis is named "DOH COVID Data Drop_2000711 - 04 Case I
 
 ### Analysis Procedures
 
-After downloading/cloning this repository, run `script.R` to automate the analysis process. The file uses other R functions to perform the necessary analysis.
+After downloading/cloning this repository, run `script.R` to automate the analysis process. The file uses other R functions to perform the necessary analysis. You may opt to do the process manually by using the given functions. For more details about the functions, check *CODEBOOK.md* (coming soon)
 
 *At this time, the analysis is still in construction. This section is subject to further changes*
 
@@ -29,6 +29,8 @@ After downloading/cloning this repository, run `script.R` to automate the analys
 *This repository is still in progress. The details below are subject to constant changes*
 
 `COVID-Analysis.Rproj` - Used for RStudio to automatically set working directories and link this project to the repository.
+
+`filecheck.R` - A short R file used for checking files and folders.
 
 `datafunctions.R` - A file containing functions to be used for data extraction, cleaning, and filtering.
 
