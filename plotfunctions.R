@@ -32,3 +32,17 @@ ggplot_missmap <- function (df) {
              y = "Row Number",
              title = "Missingness Map of DOH Data Drop")
 }
+
+ggplot_histogram <- function (df, xaxis, Legend, xlabel = "", ylabel = "Number of Cases") {
+    
+    message("Loading Histogram")
+    df %>%
+        ggplot(data = .,
+               aes(x = xaxis, color = Legend, fill = Legend)) +
+        geom_histogram(position = "stack") +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5)) +
+        labs(x = xlabel,
+             y = ylabel,
+             title = "Histogram of COVID-19 Cases")
+}
