@@ -1,12 +1,15 @@
-DataExtract <- function (filename = "COVID-Data.csv", na.assign = FALSE) {
+DataExtract <- function (filename = "", na.assign = FALSE) {
     
-    if (file.exists(filename) == FALSE) {
+    checkfolder("files")
+    if (filename == "") stop("filename missing. Please enter a filename.")
+    
+    if (file.exists(paste0("files/", filename)) == FALSE) {
         urllink <<- "https://drive.google.com/uc?export=download&id=1mPqxNLaMwDE9lQVNNByiu433BqCqRVWm"
-        download.file(urllink, destfile = filename, quiet = FALSE)
+        download.file(urllink, destfile = paste0("files/", filename), quiet = FALSE)
         DownloadDate <<- Sys.time()
     }
     else {
-        ctemp <- file.info(filename)
+        ctemp <- file.info(paste0("files/", filename))
         DownloadDate <<- ctemp$ctime
     }
     
