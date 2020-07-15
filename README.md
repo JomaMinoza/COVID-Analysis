@@ -16,9 +16,19 @@ The file used for the analysis is named "DOH COVID Data Drop_2000711 - 04 Case I
 
 ---
 
+### Analysis Procedures
+
+After downloading/cloning this repository, run `script.R` to automate the analysis process. The file uses other R functions to perform the necessary analysis.
+
+*At this time, the analysis is still in construction. This section is subject to further changes*
+
+---
+
 ### File Details
 
 *This repository is still in progress. The details below are subject to constant changes*
+
+`COVID-Analysis.Rproj` - Used for RStudio to automatically set working directories and link this project to the repository.
 
 `datafunctions.R` - A file containing functions to be used for data extraction, cleaning, and filtering.
 
@@ -28,6 +38,14 @@ The file used for the analysis is named "DOH COVID Data Drop_2000711 - 04 Case I
 
 ---
 
-### Procedures
+### Cloning Instructions
 
-*Under Construction*
+In order to clone this repository to your local computer, open RStudio then find "New Project..." then click "Version Control". Click "Git" then paste the repository link that can be found by clicking the download code in this repository page.
+
+When cloning this repository through base R console, set your working directory to the desired folder (preferably `/Documents/R`) using git console. Using command `git clone -A`, you will be able to download the whole repository where the output file is a single folder named **COVID-Analysis**
+
+---
+
+### Branching Guidelines
+
+For version control, it is advised to branch from the `master` before performing any statistical analysis. For example: If you would consider performing logistic regression to the data, you have to branch out to `master`, add an R file e.g. `logreg.R` that performs those analysis, update any existing R files if necessary, then create a pull request.
