@@ -35,7 +35,28 @@ DataSampling <- function (df, percent = 0.7, seednum = NA) {
     TrainData <<- df[samplenums,]
     TestData <<- df[-samplenums,]
     
-    message("Train Data has been stored to the variable \"TrainData\"")
-    message("Test Data has been stored to the variable \"TestData\"")
+    message("Train Data has been stored to the variable TrainData")
+    message("Test Data has been stored to the variable TestData")
     message("Data successfully sampled.")
+}
+
+DataFilter <- function (df, status = TRUE, columns) {
+    
+    if (status == TRUE) {
+        df <- subset(df, HealthStatus == c(
+                   "ASYMPTOMATIC",
+                   "CRITICAL",
+                   "DIED",
+                   "MILD",
+                   "RECOVERED",
+                   "SEVERE"))
+        
+        message("The data filtered the dataset by existing Health Status")
+    }
+    
+    df <- subset(df, select=columns)
+    
+    message("Data filtering completed")
+    
+    return(df)
 }
