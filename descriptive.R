@@ -1,18 +1,23 @@
 require(dplyr)
 
-sorted.data <- DataFilter(Dataframe, status = TRUE, columns = c("Age","Sex","HealthStatus"))
-cleaned.data <- sorted.data[!is.na(sorted.data$Age) | !is.na(sorted.data$Sex),]
-
 #Used for number of cases by Sex
-cleaned.data %>% group_by(Sex) %>% summarise(n())
+Dataframe %>% group_by(Sex) %>% summarise(n())
 
 #Used for summarization of means
-tapply(cleaned.data$Age, cleaned.data$Sex, summary)
+tapply(Dataframe$Age, Dataframe$Sex, summary)
 
 #These lines are saved for plotting
-write.csv(cleaned.data, file = "files/COVID-19 Short Details.csv")
-print(ggplot_histogram(cleaned.data, xaxis = cleaned.data$Age, Legend = cleaned.data$Sex, xlabel = "Age", ylabel = "Number of Cases"))
-print(ggplot_histogram(cleaned.data, xaxis = cleaned.data$Age, Legend = cleaned.data$HealthStatus, xlabel = "Age", ylabel = "Number of Cases"))
+print(ggplot_histogram(Dataframe, xaxis = Dataframe$Age, Legend = "", pos = "identity", xlabel = "Age", ylabel = "Number of Cases"))
+print(ggplot_histogram(Dataframe, xaxis = Dataframe$Age, Legend = Dataframe$Sex, pos = "identity", xlabel = "Age", ylabel = "Number of Cases"))
+print(ggplot_histogram(Dataframe, xaxis = Dataframe$Age, Legend = Dataframe$HealthStatus, pos = "identity", xlabel = "Age", ylabel = "Number of Cases"))
 
 ###################################
 
+countdates <- Dataframe %>% count(Dataframe$DateRepConf)
+names(countdates) <- c("Date", "Number of Cases")
+
+#For Cumulative plot
+print(ggplot_tsa(countdates, as.Date(countdates$Date), csum = cumsum(countdates$`Number of Cases`), "Dates", "Total # of Cases"))
+
+#For Logarithmic plot
+print(ggplot_log(countdates, as.Date(countdates$Date), csum = cumsum(countdates$`Number of Cases`), "Dates", "Total # of Cases"))

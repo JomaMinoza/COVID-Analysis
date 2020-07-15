@@ -33,16 +33,45 @@ ggplot_missmap <- function (df) {
              title = "Missingness Map of DOH Data Drop")
 }
 
-ggplot_histogram <- function (df, xaxis, Legend, xlabel = "", ylabel = "Number of Cases") {
+ggplot_histogram <- function (df, xaxis, Legend, pos, xlabel = "", ylabel = "Number of Cases") {
     
     message("Loading Histogram")
     df %>%
         ggplot(data = .,
                aes(x = xaxis, color = Legend, fill = Legend)) +
-        geom_histogram(position = "stack") +
+        geom_histogram(position = pos) +
         theme_minimal() +
         theme(plot.title = element_text(hjust = 0.5)) +
         labs(x = xlabel,
              y = ylabel,
              title = "Histogram of COVID-19 Cases")
+}
+
+ggplot_tsa <- function (df, dates, csum, xlabel, ylabel) {
+    
+    message("Loading Time Series Analysis")
+    df %>%
+        ggplot(data = .,
+               aes(x = dates, color = "red", y = csum)) +
+        geom_smooth(size = 1.5) +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
+        labs(x = xlabel,
+             y = ylabel,
+             title = "Cumulative Plot of COVID-19 Cases")
+}
+
+ggplot_log <- function (df, dates, csum, xlabel, ylabel) {
+    
+    message("Loading Time Series Analysis (Logarithmic)")
+    df %>%
+        ggplot(data = .,
+               aes(x = dates, color = "red", y = csum)) +
+        geom_smooth(size = 1.5) +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
+        labs(x = xlabel,
+             y = ylabel,
+             title = "Cumulative Plot of COVID-19 Cases (Logarithmic)") +
+        scale_y_log10()
 }
