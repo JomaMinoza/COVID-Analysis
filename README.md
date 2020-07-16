@@ -18,7 +18,9 @@ The file used for the analysis is named "DOH COVID Data Drop_2000711 - 04 Case I
 
 ### Analysis Procedures
 
-After downloading/cloning this repository, run `script.R` to automate the analysis process. The file uses other R functions to perform the necessary analysis. You may opt to do the process manually by using the given functions. For more details about the functions, check *CODEBOOK.md* (coming soon)
+After downloading/cloning this repository, run `script.R` to automate the analysis process. The file uses other R files and functions to perform the necessary analysis. You may opt to do the process manually by using the given functions. For more details about the functions, check *CODEBOOK.md* (coming soon)
+
+Inside `script.R`, there is a code sourcing `descriptive.R`. That R script contains all the descriptive statistics of the COVID-19 Cases. You can find the guides for reproduction by accessing `descriptive.R`.
 
 *At this time, the analysis is still in construction. This section is subject to further changes*
 
@@ -30,11 +32,13 @@ After downloading/cloning this repository, run `script.R` to automate the analys
 
 `COVID-Analysis.Rproj` - Used for RStudio to automatically set working directories and link this project to the repository.
 
-`filecheck.R` - A short R file used for checking files and folders.
+`filecontrol.R` - A short R file used for checking files and folders and other utility functions.
 
 `datafunctions.R` - A file containing functions to be used for data extraction, cleaning, and filtering.
 
-`plotfunctions.R` - Contains all plot functions used in analysis.
+`descriptive.R` - An R file that contains the codes for displaying the summary of cases and presents descriptive graphs.
+
+`plotfunctions.R` - Contains all plot functions used in data analysis.
 
 `script.R` - An R script that automates the extraction and analysis process.
 

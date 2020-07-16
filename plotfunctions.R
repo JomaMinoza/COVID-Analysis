@@ -1,22 +1,18 @@
+# File dependencies
 # The following libraries must be installed first using install.packages()
 require(dplyr)
 require(reshape2)
 require(ggplot2)
-require(Amelia)
 #################
 
-amelia_missmap <- function (df) {
-    
-    message("Loading Missingmap (Amelia)")
-    missmap(df, legend = TRUE, col = c("red","white"),
-            main = "Missingness Map of DOH Data Drop",
-            margins = c(7,3))
-}
+# Source dependencies
+source("filecontrol.R")
 
-ggplot_missmap <- function (df) {
+# Function list
+ggplot_missmap <- function (df, title = "Missingness Map of DOH Data Drop", savefile = "") {
     
     message("Loading Missingmap (ggplot)")
-    df %>% 
+    df.output <- df %>%
         is.na %>%
         melt %>%
         ggplot(data = .,
@@ -30,5 +26,80 @@ ggplot_missmap <- function (df) {
               plot.title = element_text(hjust = 0.5)) + 
         labs(x = "Variables in Dataset",
              y = "Row Number",
-             title = "Missingness Map of DOH Data Drop")
+             title = title)
+    
+    if (savefile != "") {
+        
+        checkfolder("plots")
+        ggsave(paste0("plots/", savefile))
+    }
+    
+    return(df.output)
+}
+
+ggplot_histogram <- function (df, xaxis, title = "Histogram of COVID-19 Cases", Legend = NULL, pos = "identity", binnum = 30, xlabel = "", ylabel = "Number of Cases", savefile = "") {
+    
+    message("Loading Histogram")
+    df.output <- df %>%
+        ggplot(data = .,
+               aes(x = xaxis, color = Legend, fill = Legend)) +
+        geom_histogram(position = pos, bins = binnum) +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5)) +
+        labs(x = xlabel,
+             y = ylabel,
+             title = title)
+    
+    if (savefile != "") {
+        
+        checkfolder("plots")
+        ggsave(paste0("plots/", savefile))
+    }
+    
+    return(df.output)
+}
+
+ggplot_tsa <- function (df, title = "Cumulative Plot of COVID-19 Cases", dates, csum, xlabel, ylabel, savefile = "") {
+    
+    message("Loading Time Series Analysis")
+    df.output <- df %>%
+        ggplot(data = .,
+               aes(x = dates, color = "red", y = csum)) +
+        geom_line(size = 1.5) +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
+        labs(x = xlabel,
+             y = ylabel,
+             title = title)
+    
+    if (savefile != "") {
+        
+        checkfolder("plots")
+        ggsave(paste0("plots/", savefile))
+    }
+    
+    return(df.output)
+}
+
+ggplot_log <- function (df, title = "Cumulative Plot of COVID-19 Cases (Logarithmic)", dates, csum, xlabel, ylabel, savefile = "") {
+    
+    message("Loading Time Series Analysis (Logarithmic)")
+    df.output <- df %>%
+        ggplot(data = .,
+               aes(x = dates, color = "red", y = csum)) +
+        geom_line(size = 1.5) +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
+        labs(x = xlabel,
+             y = ylabel,
+             title = title) +
+        scale_y_log10()
+    
+    if (savefile != "") {
+        
+        checkfolder("plots")
+        ggsave(paste0("plots/", savefile))
+    }
+    
+    return(df.output)
 }
