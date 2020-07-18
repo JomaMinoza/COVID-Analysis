@@ -1,3 +1,5 @@
+message("Running \"datafunctions.R\"")
+
 # Source dependencies
 source("filecontrol.R")
 
@@ -7,8 +9,9 @@ DataExtract <- function (filename = "", na.assign = FALSE) {
     checkfolder("files")
     if (filename == "") stop("argument \"filename\" missing. Please enter a filename.")
     
+    urllink <<- "https://drive.google.com/uc?export=download&id=1mPqxNLaMwDE9lQVNNByiu433BqCqRVWm"
+    
     if (file.exists(paste0("files/", filename)) == FALSE) {
-        urllink <<- "https://drive.google.com/uc?export=download&id=1mPqxNLaMwDE9lQVNNByiu433BqCqRVWm"
         download.file(urllink, destfile = paste0("files/", filename), quiet = FALSE)
         DownloadDate <<- Sys.time()
     }
@@ -18,7 +21,7 @@ DataExtract <- function (filename = "", na.assign = FALSE) {
     }
     
     df <- read.csv(paste0("files/",filename), header = TRUE)
-    df$Sex = factor(df$Sex, levels = c("MALE","FEMALE"))
+  # df$Sex <- factor(df$Sex , levels=levels(df$Sex)[order(levels(df$Sex), decreasing = TRUE)]) # Rearrange level order; optional
     
     if (na.assign == TRUE) df <- replace(df, df == "", NA)
     
@@ -46,9 +49,9 @@ DataSampling <- function (df, percent = 0.7, seednum = NA) {
     outputlist <- list(TrainData, TestData)
     names(outputlist) <- c("TrainData","TestData")
     
-    message("Train Data has been stored to the variable TrainData")
-    message("Test Data has been stored to the variable TestData")
-    message("Data successfully sampled.")
+    message("Train Data has been stored to the list name \"TrainData\"")
+    message("Test Data has been stored to the list name \"TestData\"")
+    message("Data successfully sampled")
     
     return(outputlist)
 }

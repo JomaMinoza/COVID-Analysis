@@ -1,3 +1,13 @@
+message("Running \"descriptive.R\"")
+
+# The following libraries must be installed first using install.packages()
+#################
+require(dplyr)
+require(tidyr)
+require(ggplot2)
+require(cowplot)
+#################
+
 # Source dependencies
 source("plotfunctions.R")
 
