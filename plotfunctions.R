@@ -1,5 +1,7 @@
-# File dependencies
+message("Running \"datafunctions.R\"")
+
 # The following libraries must be installed first using install.packages()
+#################
 require(dplyr)
 require(reshape2)
 require(ggplot2)
@@ -9,7 +11,7 @@ require(ggplot2)
 source("filecontrol.R")
 
 # Function list
-ggplot_missmap <- function (df, title = "Missingness Map of DOH Data Drop", savefile = "") {
+ggplot_missmap <- function (df, title = "", savefile = "") {
     
     message("Loading Missingmap (ggplot)")
     df.output <- df %>%
@@ -37,7 +39,7 @@ ggplot_missmap <- function (df, title = "Missingness Map of DOH Data Drop", save
     return(df.output)
 }
 
-ggplot_histogram <- function (df, xaxis, title = "Histogram of COVID-19 Cases", Legend = NULL, pos = "identity", binnum = 30, xlabel = "", ylabel = "Number of Cases", savefile = "") {
+ggplot_histogram <- function (df, xaxis, title = "", Legend = NULL, pos = "identity", binnum = 30, xlabel = "", ylabel = "Number of Cases", savefile = "") {
     
     message("Loading Histogram")
     df.output <- df %>%
@@ -54,12 +56,13 @@ ggplot_histogram <- function (df, xaxis, title = "Histogram of COVID-19 Cases", 
         
         checkfolder("plots")
         ggsave(paste0("plots/", savefile))
+        
     }
     
     return(df.output)
 }
 
-ggplot_tsa <- function (df, title = "Cumulative Plot of COVID-19 Cases", dates, csum, xlabel, ylabel, savefile = "") {
+ggplot_tsa <- function (df, title = "", dates, csum, xlabel, ylabel, savefile = "") {
     
     message("Loading Time Series Analysis")
     df.output <- df %>%
@@ -81,7 +84,7 @@ ggplot_tsa <- function (df, title = "Cumulative Plot of COVID-19 Cases", dates, 
     return(df.output)
 }
 
-ggplot_log <- function (df, title = "Cumulative Plot of COVID-19 Cases (Logarithmic)", dates, csum, xlabel, ylabel, savefile = "") {
+ggplot_log <- function (df, title = "", dates, csum, xlabel, ylabel, savefile = "") {
     
     message("Loading Time Series Analysis (Logarithmic)")
     df.output <- df %>%

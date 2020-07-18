@@ -4,7 +4,7 @@
 
 This repository is a project of Mapúa Data Science Team under MATH Department. The following data presented are the descriptive and inferential analysis of COVID-19 Cases in the Philippines.
 
-In the process of analysis, all files are to be run in R or RStudio. The scripts were done to provide visual outputs e.g. graphs for visualization. 
+In the process of analysis, all files are to be run in R or RStudio. The scripts were done to provide visual outputs e.g. graphs for visualization.
 
 ---
 
@@ -18,17 +18,19 @@ The file used for the analysis is named "DOH COVID Data Drop_2000711 - 04 Case I
 
 ### Analysis Procedures
 
-After downloading/cloning this repository, run `script.R` to automate the analysis process. The file uses other R files and functions to perform the necessary analysis. You may opt to do the process manually by using the given functions. For more details about the functions, check *CODEBOOK.md* (coming soon)
+After downloading/cloning this repository, run `script.R` to automate the analysis process. The file uses other R files and functions to perform the necessary analysis. You may opt to do the process manually by using the given functions. For more details about the functions, check `CODEBOOK.md`.
 
-Inside `script.R`, there is a code sourcing `descriptive.R`. That R script contains all the descriptive statistics of the COVID-19 Cases. You can find the guides for reproduction by accessing `descriptive.R`.
-
-*At this time, the analysis is still in construction. This section is subject to further changes*
+Inside `script.R`, there is a code sourcing `descriptive.R`. That R script contains all the descriptive statistics of the COVID-19 Cases. You can find the guides for reproduction by accessing `descriptive.R`. For in-depth detail, visit `COVID-19-Descriptive-Analysis.md`
 
 ---
 
 ### File Details
 
-*This repository is still in progress. The details below are subject to constant changes*
+The following are the short details of each file found in this repository.
+
+`COVID-19-Descriptive-Analysis.md` - Shows the reproduction of analysis and provides necessary details that are supports from other scripts in this repository.
+
+`COVID-19-Descriptive-Analysis.pdf` - Same as above but in `pdf` format.
 
 `COVID-Analysis.Rproj` - Used for RStudio to automatically set working directories and link this project to the repository.
 
@@ -36,11 +38,11 @@ Inside `script.R`, there is a code sourcing `descriptive.R`. That R script conta
 
 `datafunctions.R` - A file containing functions to be used for data extraction, cleaning, and filtering.
 
-`descriptive.R` - An R file that contains the codes for displaying the summary of cases and presents descriptive graphs.
+`descriptive.R` - An R script that contains the guide for displaying the summary of cases and presents descriptive graphs. Refer to `COVID-19-Descriptive-Analysis.md`
 
 `plotfunctions.R` - Contains all plot functions used in data analysis.
 
-`script.R` - An R script that automates the extraction and analysis process.
+`script.R` - An R script that automates the guide for extraction and analysis process. Refer to `COVID-19-Descriptive-Analysis.md`
 
 ---
 
@@ -54,4 +56,4 @@ When cloning this repository through base R console, set your working directory 
 
 ### Branching Guidelines
 
-For version control, it is advised to branch from the `master` before performing any statistical analysis. For example: If you would consider performing logistic regression to the data, you have to branch out to `master`, add an R file e.g. `logreg.R` that performs those analysis, update any existing R files if necessary, then create a pull request.
+For version control, it is advised to branch from the `master` before performing any statistical analysis. For example: If you would consider performing a different analysis to the data, you have to branch out to `master`, add an R file that performs those analysis, update any existing R files if necessary, then create a pull request for review.
