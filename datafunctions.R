@@ -4,14 +4,14 @@ message("Running \"datafunctions.R\"")
 source("filecontrol.R")
 
 # Function list
-DataExtract <- function (filename = "", na.assign = FALSE) {
+DataExtract <- function (code, filename = "", overwrite = FALSE, na.assign = FALSE) {
     
     checkfolder("files")
     if (filename == "") stop("argument \"filename\" missing. Please enter a filename.")
     
-    urllink <<- "https://drive.google.com/uc?export=download&id=1mPqxNLaMwDE9lQVNNByiu433BqCqRVWm"
+    urllink <<- paste0("https://drive.google.com/uc?export=download&id=", code)
     
-    if (file.exists(paste0("files/", filename)) == FALSE) {
+    if (file.exists(paste0("files/", filename)) == FALSE | overwrite == TRUE) {
         download.file(urllink, destfile = paste0("files/", filename), quiet = FALSE)
         DownloadDate <<- Sys.time()
     }
@@ -33,6 +33,8 @@ DataExtract <- function (filename = "", na.assign = FALSE) {
 
 DataSampling <- function (df, percent = 0.7, seednum = NA) {
     
+    if (percent <= 0 | percent >= 1) stop("Enter \"percent\" with a value between 0 to 1")
+  
     if (is.numeric(seednum) == TRUE) set.seed(seednum)
     else {
         seednum <- runif(1)
@@ -44,35 +46,14 @@ DataSampling <- function (df, percent = 0.7, seednum = NA) {
     samplenums <- sample(nrow(df), size = samplesize)
     
     TrainData <- df[samplenums,]
+    message("Train Data has been stored to the list name \"TrainData\"")
     TestData <- df[-samplenums,]
+    message("Test Data has been stored to the list name \"TestData\"")
     
     outputlist <- list(TrainData, TestData)
     names(outputlist) <- c("TrainData","TestData")
     
-    message("Train Data has been stored to the list name \"TrainData\"")
-    message("Test Data has been stored to the list name \"TestData\"")
     message("Data successfully sampled")
     
     return(outputlist)
-}
-
-DataFilter <- function (df, status = TRUE, columns) {
-    
-    if (status == TRUE) {
-        df <- subset(df, HealthStatus == c(
-                   "ASYMPTOMATIC",
-                   "CRITICAL",
-                   "DIED",
-                   "MILD",
-                   "RECOVERED",
-                   "SEVERE"))
-        
-        message("The data filtered the dataset by existing Health Status")
-    }
-    
-    df <- subset(df, select=columns)
-    
-    message("Data filtering completed")
-    
-    return(df)
 }

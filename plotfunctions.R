@@ -83,26 +83,3 @@ ggplot_tsa <- function (df, title = "", dates, csum, xlabel, ylabel, savefile = 
     
     return(df.output)
 }
-
-ggplot_log <- function (df, title = "", dates, csum, xlabel, ylabel, savefile = "") {
-    
-    message("Loading Time Series Analysis (Logarithmic)")
-    df.output <- df %>%
-        ggplot(data = .,
-               aes(x = dates, color = "red", y = csum)) +
-        geom_line(size = 1.5) +
-        theme_minimal() +
-        theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
-        labs(x = xlabel,
-             y = ylabel,
-             title = title) +
-        scale_y_log10()
-    
-    if (savefile != "") {
-        
-        checkfolder("plots")
-        ggsave(paste0("plots/", savefile))
-    }
-    
-    return(df.output)
-}

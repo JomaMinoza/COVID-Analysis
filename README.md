@@ -32,9 +32,15 @@ This project uses MIT License. This means that you are freely to modify this pro
 
 The following are the short details of each file found in this repository.
 
+`CODEBOOK.md` - Displays the technical details of function arguments, variables and function list.
+
+`CODEBOOK.pdf` - Same as above but in `pdf` format.
+
 `COVID-19-Descriptive-Analysis.md` - Shows the reproduction of analysis and provides necessary details that are supports from other scripts in this repository.
 
 `COVID-19-Descriptive-Analysis.pdf` - Same as above but in `pdf` format.
+
+`COVID-19-Descriptive-Analysis_files/` - A folder that contains all images used in `COVID-19-Descriptive-Analysis.md`.
 
 `COVID-Analysis.Rproj` - Used for RStudio to automatically set working directories and link this project to the repository.
 
@@ -42,11 +48,7 @@ The following are the short details of each file found in this repository.
 
 `datafunctions.R` - A file containing functions to be used for data extraction, cleaning, and filtering.
 
-`descriptive.R` - An R script that contains the guide for displaying the summary of cases and presents descriptive graphs. Refer to `COVID-19-Descriptive-Analysis.md`
-
 `plotfunctions.R` - Contains all plot functions used in data analysis.
-
-`script.R` - An R script that automates the guide for extraction and analysis process. Refer to `COVID-19-Descriptive-Analysis.md`
 
 ---
 
