@@ -10,15 +10,13 @@ In the process of analysis, all files are to be run in R or RStudio. The scripts
 
 ### Scope of the Data
 
-The data was collected through Department of Health's COVID-19 Data Drop using [Google Drive](https://drive.google.com/drive/folders/1UelgRGmUGNMKH1Q3nzqTj57V41bjmnxg?usp=sharing). The file used for the analysis is named "DOH COVID Data Drop_2000711 - 04 Case Information (1).csv". The data covered are only cases that are updated last **July 11, 2020**, therefore the analysis are subject to changes in observations in later dates.
+The data was collected through Department of Health's COVID-19 Data Drop using [Google Drive](https://drive.google.com/drive/folders/1UelgRGmUGNMKH1Q3nzqTj57V41bjmnxg?usp=sharing). The file used for the analysis is named `DOH COVID Data Drop_2000720 - 04 Case Information.csv`. The data covered are only cases that are updated last **July 20, 2020**, therefore the analysis are subject to changes in observations in later dates.
 
 ---
 
 ### Analysis Procedures
 
-After downloading/cloning this repository, run `script.R` to automate the analysis process. The file uses other R files and functions to perform the necessary analysis. You may opt to do the process manually by using the given functions. For more details about the functions, check `CODEBOOK.md`.
-
-Inside `script.R`, there is a code sourcing `descriptive.R`. That R script contains all the descriptive statistics of the COVID-19 Cases. You can find the guides for reproduction by accessing `descriptive.R`. For in-depth detail, visit [`COVID-19-Descriptive-Analysis.md`](https://github.com/KaidenFrizu/COVID-Analysis/blob/master/COVID-19-Descriptive-Analysis.md)
+The following analysis can be viewed in [`COVID-19-Descriptive-Analysis.md`](https://github.com/KaidenFrizu/COVID-Analysis/blob/master/COVID-19-Descriptive-Analysis.md) where it contains all necessary information for analysis reproduction. For technical details of the functions used, visit [`CODEBOOK.md`](https://github.com/KaidenFrizu/COVID-Analysis/blob/master/CODEBOOK.md)
 
 ---
 
