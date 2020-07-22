@@ -79,7 +79,7 @@ and it can be any variable you desire.*
                              overwrite = TRUE,
                              na.assign = TRUE)
 
-    ## Download Date: 2020-07-22 18:50:38
+    ## Download Date: 2020-07-22 19:22:00
 
     ## File extracted successfully.
 
@@ -134,7 +134,7 @@ documentation.
 
     print(DownloadDate)
 
-    ## [1] "2020-07-22 18:50:38 CST"
+    ## [1] "2020-07-22 19:22:00 CST"
 
 Table Summaries
 ---------------
@@ -199,7 +199,7 @@ table below outputs the summary of cases sorted by `Sex`.
     ## 2 MALE   38844
 
 Based from the table above, there are more male individuals infected
-with COVID-19 than female individuals. Male cases are 22.63% higher than
+with COVID-19 than female individuals. Male cases are 29.25% higher than
 female cases.
 
 The following table below presents the number of cases grouped by both
