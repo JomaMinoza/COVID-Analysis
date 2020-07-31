@@ -2,3 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+files/
+plots/
+CODEBOOK.Rmd
+COVID-19 Descriptive Analysis.Rmd
