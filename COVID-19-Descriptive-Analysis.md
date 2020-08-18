@@ -13,14 +13,14 @@ pages, and news.
 DOH released raw data containing information regarding COVID-19 through
 Data Drop by Google Drive. Every few days, the institution released
 updated cases though separate files in `.csv` formats. As of the time of
-this publication, the latest case information was dated last **July
-20,2020**.
+this publication, the latest case information was dated last **August
+15, 2020**.
 
 Scope of the Report
 -------------------
 
 The information retrieved by this project would be the cases that are
-updated last **July 11, 2020**. Therefore, the observations presented
+updated last **August 15, 2020**. Therefore, the observations presented
 are limited to the cases beyond the aforementioned date.
 
 The functions and scripts used in this report are found in this
@@ -38,8 +38,8 @@ Data Extraction
 The data obtained and used for this report came from [DOH Data
 Drop](https://drive.google.com/drive/folders/1UelgRGmUGNMKH1Q3nzqTj57V41bjmnxg?usp=sharing)
 though Google Drive. The latest information of the cases as of this date
-is found in `DOH COVID Data Drop_2000720 - 04 Case Information.csv` that
-can be found using the link above.
+is found in `DOH COVID Data Drop_20200815 - 04 Case Information.csv`
+that can be found using the link above.
 
 In order to find the appropriate code, go to the Data Drop, right-click
 the necessary csv file, then click “Get shareable link”. The format of
@@ -49,7 +49,7 @@ the given link would be:
 
 whereas the string of `#`s corresponds to the code required. copy that
 code and paste it to the function. In this case, the code would be
-`1gjOmMi8QGicAYUFqEkMdWNdrakEIS_Rb`.
+`1GNL1jHjfDB84uTEwS7sOiXI5MzXXx0uA`.
 
 Before performing the following codes, make sure your current working
 directory is set to the COVID-Analysis folder (or any folder name as
@@ -74,55 +74,43 @@ and it can be any variable you desire.*
 
     ## Running "filecontrol.R"
 
-    Dataframe <- DataExtract(code = "1gjOmMi8QGicAYUFqEkMdWNdrakEIS_Rb",
+    Dataframe <- DataExtract(code = "1GNL1jHjfDB84uTEwS7sOiXI5MzXXx0uA",
                              filename = "COVID-Data.csv",
                              overwrite = TRUE,
                              na.assign = TRUE)
 
-    ## Download Date: 2020-07-22 19:22:00
+    ## Download Date: 2020-08-18 13:01:50
 
     ## File extracted successfully.
 
-    head(Dataframe)
+    head(Dataframe, n = 5)
 
-    ##   CaseCode Age AgeGroup    Sex DateSpecimen DateResultRelease DateRepConf
-    ## 1  C707207  66 65 to 69   MALE   2020-07-13        2020-07-17  2020-07-20
-    ## 2  C857578  45 45 to 49 FEMALE   2020-07-15        2020-07-17  2020-07-20
-    ## 3  C770118  NA     <NA>   MALE   2020-07-16        2020-07-18  2020-07-20
-    ## 4  C412117  38 35 to 39   MALE   2020-07-13        2020-07-16  2020-07-20
-    ## 5  C120598  NA     <NA>   MALE   2020-07-16        2020-07-18  2020-07-20
-    ## 6  C285366  32 30 to 34   MALE   2020-07-13        2020-07-17  2020-07-20
-    ##   DateDied DateRecover RemovalType Admitted               RegionRes ProvRes
-    ## 1     <NA>        <NA>        <NA>       NO                     NCR     NCR
-    ## 2     <NA>        <NA>        <NA>       NO Region IV-A: CALABARZON  CAVITE
-    ## 3     <NA>        <NA>        <NA>       NO                     NCR     NCR
-    ## 4     <NA>        <NA>        <NA>       NO                     NCR     NCR
-    ## 5     <NA>        <NA>        <NA>       NO                     NCR     NCR
-    ## 6     <NA>        <NA>        <NA>       NO                     NCR     NCR
-    ##   CityMunRes CityMuniPSGC HealthStatus Quarantined DateOnset Pregnanttab
-    ## 1       <NA>         <NA>         MILD          NO      <NA>        <NA>
-    ## 2       <NA>         <NA>         MILD          NO      <NA>          NO
-    ## 3       <NA>         <NA>         MILD          NO      <NA>        <NA>
-    ## 4       <NA>         <NA>         MILD          NO      <NA>        <NA>
-    ## 5       <NA>         <NA>         MILD          NO      <NA>        <NA>
-    ## 6       <NA>         <NA>         MILD          NO      <NA>        <NA>
-    ##   ValidationStatus
-    ## 1             <NA>
-    ## 2             <NA>
-    ## 3             <NA>
-    ## 4             <NA>
-    ## 5             <NA>
-    ## 6             <NA>
+    ##   CaseCode Age AgeGroup    Sex DateSpecimen DateResultRelease DateRepConf DateDied DateRecover
+    ## 1  C172359  NA     <NA>   MALE   2020-07-16        2020-07-18  2020-08-15     <NA>        <NA>
+    ## 2  C365375  NA     <NA>   MALE   2020-07-14        2020-07-17  2020-08-15     <NA>        <NA>
+    ## 3  C531087  NA     <NA> FEMALE   2020-07-17        2020-07-18  2020-08-15     <NA>        <NA>
+    ## 4  C540830  27 25 to 29 FEMALE   2020-08-10        2020-08-13  2020-08-15     <NA>        <NA>
+    ## 5  C450852  73 70 to 74 FEMALE   2020-08-10        2020-08-12  2020-08-14     <NA>        <NA>
+    ##   RemovalType Admitted               RegionRes ProvRes CityMunRes CityMuniPSGC HealthStatus
+    ## 1        <NA>       NO                    <NA>    <NA>       <NA>         <NA>         MILD
+    ## 2        <NA>       NO                    <NA>    <NA>       <NA>         <NA>         MILD
+    ## 3        <NA>       NO                    <NA>    <NA>       <NA>         <NA>         MILD
+    ## 4        <NA>       NO              REPATRIATE    <NA>       <NA>         <NA>         MILD
+    ## 5        <NA>       NO Region IV-A: CALABARZON    <NA>       <NA>         <NA>         MILD
+    ##   Quarantined DateOnset Pregnanttab ValidationStatus
+    ## 1          NO      <NA>        <NA>             <NA>
+    ## 2          NO      <NA>        <NA>             <NA>
+    ## 3          NO      <NA>          NO             <NA>
+    ## 4          NO      <NA>          NO             <NA>
+    ## 5          NO      <NA>          NO             <NA>
 
     names(Dataframe)
 
-    ##  [1] "CaseCode"          "Age"               "AgeGroup"         
-    ##  [4] "Sex"               "DateSpecimen"      "DateResultRelease"
-    ##  [7] "DateRepConf"       "DateDied"          "DateRecover"      
-    ## [10] "RemovalType"       "Admitted"          "RegionRes"        
-    ## [13] "ProvRes"           "CityMunRes"        "CityMuniPSGC"     
-    ## [16] "HealthStatus"      "Quarantined"       "DateOnset"        
-    ## [19] "Pregnanttab"       "ValidationStatus"
+    ##  [1] "CaseCode"          "Age"               "AgeGroup"          "Sex"              
+    ##  [5] "DateSpecimen"      "DateResultRelease" "DateRepConf"       "DateDied"         
+    ##  [9] "DateRecover"       "RemovalType"       "Admitted"          "RegionRes"        
+    ## [13] "ProvRes"           "CityMunRes"        "CityMuniPSGC"      "HealthStatus"     
+    ## [17] "Quarantined"       "DateOnset"         "Pregnanttab"       "ValidationStatus"
 
 The following variables were also created in the process: `urllink` and
 `DownloadDate`. This can be used for further reference and
@@ -130,11 +118,11 @@ documentation.
 
     print(urllink)
 
-    ## [1] "https://drive.google.com/uc?export=download&id=1gjOmMi8QGicAYUFqEkMdWNdrakEIS_Rb"
+    ## [1] "https://drive.google.com/uc?export=download&id=1GNL1jHjfDB84uTEwS7sOiXI5MzXXx0uA"
 
     print(DownloadDate)
 
-    ## [1] "2020-07-22 19:22:00 CST"
+    ## [1] "2020-08-18 13:01:50 CST"
 
 Table Summaries
 ---------------
@@ -173,16 +161,16 @@ The table below outputs the summary of cases sorted by `HealthStatus`.
     ## # A tibble: 6 x 2
     ##   HealthStatus `n()`
     ##   <fct>        <int>
-    ## 1 ASYMPTOMATIC  3740
-    ## 2 CRITICAL       199
-    ## 3 DIED          1835
-    ## 4 MILD         39864
-    ## 5 RECOVERED    23072
-    ## 6 SEVERE         188
+    ## 1 ASYMPTOMATIC  6228
+    ## 2 CRITICAL       735
+    ## 3 DIED          2600
+    ## 4 MILD         75667
+    ## 5 RECOVERED    72209
+    ## 6 SEVERE         479
 
 From the data, most of the cases have a health status of `MILD` where
 small coughs and sickness were the observed symptoms through most of the
-patients. This contributes to the 57.86% of the total cases.
+patients. This contributes to the 47.92% of the total cases.
 
 ### Summary by Sex
 
@@ -190,40 +178,50 @@ The following lines consider the column `Sex` from `Dataframe`. The
 table below outputs the summary of cases sorted by `Sex`.
 
     sex.summary <- Dataframe %>% group_by(Sex) %>% summarise(n())
+
+    ## Warning: Factor `Sex` contains implicit NA, consider using `forcats::fct_explicit_na`
+
     print(sex.summary)
 
-    ## # A tibble: 2 x 2
+    ## # A tibble: 3 x 2
     ##   Sex    `n()`
     ##   <fct>  <int>
-    ## 1 FEMALE 30054
-    ## 2 MALE   38844
+    ## 1 FEMALE 69268
+    ## 2 MALE   88649
+    ## 3 <NA>       1
 
 Based from the table above, there are more male individuals infected
-with COVID-19 than female individuals. Male cases are 29.25% higher than
+with COVID-19 than female individuals. Male cases are 27.98% higher than
 female cases.
 
 The following table below presents the number of cases grouped by both
 `Sex` and `HealthStatus`.
 
     group.summary <- Dataframe %>% group_by(Sex, HealthStatus) %>% summarise(n())
+
+    ## Warning: Factor `Sex` contains implicit NA, consider using `forcats::fct_explicit_na`
+
     print(group.summary)
 
-    ## # A tibble: 12 x 3
-    ## # Groups:   Sex [2]
+    ## Warning: Factor `Sex` contains implicit NA, consider using `forcats::fct_explicit_na`
+
+    ## # A tibble: 13 x 3
+    ## # Groups:   Sex [3]
     ##    Sex    HealthStatus `n()`
     ##    <fct>  <fct>        <int>
-    ##  1 FEMALE ASYMPTOMATIC  1717
-    ##  2 FEMALE CRITICAL        78
-    ##  3 FEMALE DIED           699
-    ##  4 FEMALE MILD         16992
-    ##  5 FEMALE RECOVERED    10491
-    ##  6 FEMALE SEVERE          77
-    ##  7 MALE   ASYMPTOMATIC  2023
-    ##  8 MALE   CRITICAL       121
-    ##  9 MALE   DIED          1136
-    ## 10 MALE   MILD         22872
-    ## 11 MALE   RECOVERED    12581
-    ## 12 MALE   SEVERE         111
+    ##  1 FEMALE ASYMPTOMATIC  2838
+    ##  2 FEMALE CRITICAL       296
+    ##  3 FEMALE DIED          1014
+    ##  4 FEMALE MILD         32931
+    ##  5 FEMALE RECOVERED    31972
+    ##  6 FEMALE SEVERE         217
+    ##  7 MALE   ASYMPTOMATIC  3390
+    ##  8 MALE   CRITICAL       439
+    ##  9 MALE   DIED          1586
+    ## 10 MALE   MILD         42735
+    ## 11 MALE   RECOVERED    40237
+    ## 12 MALE   SEVERE         262
+    ## 13 <NA>   MILD             1
 
 Within all factors of `HealthStatus`, there are more male reported male
 cases than female cases.
@@ -236,32 +234,31 @@ columns along with `HealthStatus`.
 
     agegroup.summary <- Dataframe %>% group_by(AgeGroup) %>% summarise(n())
 
-    ## Warning: Factor `AgeGroup` contains implicit NA, consider using
-    ## `forcats::fct_explicit_na`
+    ## Warning: Factor `AgeGroup` contains implicit NA, consider using `forcats::fct_explicit_na`
 
     print(agegroup.summary)
 
     ## # A tibble: 18 x 2
     ##    AgeGroup `n()`
     ##    <fct>    <int>
-    ##  1 0 to 4     903
-    ##  2 10 to 14  1142
-    ##  3 15 to 19  1939
-    ##  4 20 to 24  6709
-    ##  5 25 to 29  9825
-    ##  6 30 to 34  9342
-    ##  7 35 to 39  7145
-    ##  8 40 to 44  6115
-    ##  9 45 to 49  5490
-    ## 10 5 to 9     802
-    ## 11 50 to 54  4975
-    ## 12 55 to 59  4230
-    ## 13 60 to 64  3279
-    ## 14 65 to 69  2442
-    ## 15 70 to 74  1722
-    ## 16 75 to 79   950
-    ## 17 80+        993
-    ## 18 <NA>       895
+    ##  1 0 to 4    2177
+    ##  2 10 to 14  2523
+    ##  3 15 to 19  4421
+    ##  4 20 to 24 16817
+    ##  5 25 to 29 24170
+    ##  6 30 to 34 21555
+    ##  7 35 to 39 16680
+    ##  8 40 to 44 14241
+    ##  9 45 to 49 12162
+    ## 10 5 to 9    1752
+    ## 11 50 to 54 10800
+    ## 12 55 to 59  9084
+    ## 13 60 to 64  6807
+    ## 14 65 to 69  4790
+    ## 15 70 to 74  3353
+    ## 16 75 to 79  1808
+    ## 17 80+       1935
+    ## 18 <NA>      2843
 
 Since there is `NA` values over the column `AgeGroup`, the following
 code removes rows containing `NA` values in `AgeGroup`.
@@ -272,23 +269,23 @@ code removes rows containing `NA` values in `AgeGroup`.
     ## # A tibble: 17 x 2
     ##    AgeGroup `n()`
     ##    <fct>    <int>
-    ##  1 0 to 4     903
-    ##  2 10 to 14  1142
-    ##  3 15 to 19  1939
-    ##  4 20 to 24  6709
-    ##  5 25 to 29  9825
-    ##  6 30 to 34  9342
-    ##  7 35 to 39  7145
-    ##  8 40 to 44  6115
-    ##  9 45 to 49  5490
-    ## 10 5 to 9     802
-    ## 11 50 to 54  4975
-    ## 12 55 to 59  4230
-    ## 13 60 to 64  3279
-    ## 14 65 to 69  2442
-    ## 15 70 to 74  1722
-    ## 16 75 to 79   950
-    ## 17 80+        993
+    ##  1 0 to 4    2177
+    ##  2 10 to 14  2523
+    ##  3 15 to 19  4421
+    ##  4 20 to 24 16817
+    ##  5 25 to 29 24170
+    ##  6 30 to 34 21555
+    ##  7 35 to 39 16680
+    ##  8 40 to 44 14241
+    ##  9 45 to 49 12162
+    ## 10 5 to 9    1752
+    ## 11 50 to 54 10800
+    ## 12 55 to 59  9084
+    ## 13 60 to 64  6807
+    ## 14 65 to 69  4790
+    ## 15 70 to 74  3353
+    ## 16 75 to 79  1808
+    ## 17 80+       1935
 
 The age groups with the most number of COVID-19 cases are `25 to 29` and
 `30 to 34` where the cases reach over 7000. On the other hand, children
@@ -351,7 +348,7 @@ with complete data.
 
     ## Running "filecontrol.R"
 
-    # The graph below might be blurry at times,                             #
+    # The graph below might be blurry at times or doesn't appear at all,    #
     # but you can find the clear graph version in the project folder under  #
     # "plots/Missingness Map.png" as an automatic output to the code below. #
 
@@ -386,7 +383,7 @@ on those said columns.
 
     case.plot + labs(title = "Histogram of COVID-19 Cases")
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
 ![](COVID-19-Descriptive-Analysis_files/figure-markdown_strict/Histogram_Cases-1.png)
 
@@ -406,7 +403,7 @@ distribution.
 
     case.plot2 + labs(title = "Histogram of COVID-19 Cases")
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
 ![](COVID-19-Descriptive-Analysis_files/figure-markdown_strict/Histogram_Cases2-1.png)
 
@@ -431,7 +428,7 @@ stack to one another.
 
     sex.plot + labs(title = "Histogram of COVID-19 Cases by Sex")
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
 ![](COVID-19-Descriptive-Analysis_files/figure-markdown_strict/Histogram_Sex2-1.png)
 
@@ -451,7 +448,7 @@ illustrates the same distribution as above but `binnum = 15`.
 
     sex.plot2 + labs(title = "Histogram of COVID-19 Cases by Sex")
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
 ![](COVID-19-Descriptive-Analysis_files/figure-markdown_strict/Histogram_Sex3-1.png)
 
@@ -465,13 +462,13 @@ was formed.
     plot_grid(case.plot, sex.plotb, case.plot2, sex.plot2b,
               labels = c("binnum = 30", "Sex, binnum = 30", "binnum = 15", "Sex, binnum = 15"))
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
 ![](COVID-19-Descriptive-Analysis_files/figure-markdown_strict/Gridplot-1.png)
 
@@ -495,7 +492,7 @@ same histogram with `binnum=15`.
 
     hs.plot + labs(title = "Histogram of COVID-19 Cases by Health Status")
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
 ![](COVID-19-Descriptive-Analysis_files/figure-markdown_strict/Histogram_HS-1.png)
 
@@ -511,7 +508,7 @@ same histogram with `binnum=15`.
 
     hs.plot2 + labs(title = "Histogram of COVID-19 Cases by Health Status")
 
-    ## Warning: Removed 895 rows containing non-finite values (stat_bin).
+    ## Warning: Removed 2843 rows containing non-finite values (stat_bin).
 
 ![](COVID-19-Descriptive-Analysis_files/figure-markdown_strict/Histogram_HS2-1.png)
 
@@ -530,7 +527,7 @@ date using the code below:
 
     print(Casecount)
 
-    ## # A tibble: 140 x 3
+    ## # A tibble: 166 x 3
     ##    Date       Number.of.Cases Cumulative.Sum
     ##    <fct>                <int>          <int>
     ##  1 2020-01-30               1              1
@@ -543,7 +540,7 @@ date using the code below:
     ##  8 2020-03-10               9             33
     ##  9 2020-03-11              16             49
     ## 10 2020-03-12               3             52
-    ## # ... with 130 more rows
+    ## # ... with 156 more rows
 
 Next, the following code plots the values given in `Casecount` where the
 x-axis are the dates and the y-axis are the cumulative sum given in
