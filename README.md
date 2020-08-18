@@ -10,7 +10,7 @@ In the process of analysis, all files are to be run in R or RStudio. The scripts
 
 ### Scope of the Data
 
-The data was collected through Department of Health's COVID-19 Data Drop using [Google Drive](https://drive.google.com/drive/folders/1UelgRGmUGNMKH1Q3nzqTj57V41bjmnxg?usp=sharing). The file used for the analysis is named `DOH COVID Data Drop_2000728 - 04 Case Information.csv`. The data covered are only cases that are updated last **July 28, 2020**, therefore the analysis are subject to changes in observations in later dates.
+The data was collected through Department of Health's COVID-19 Data Drop using [Google Drive](https://drive.google.com/drive/folders/1UelgRGmUGNMKH1Q3nzqTj57V41bjmnxg?usp=sharing). The file used for the analysis is named `DOH COVID Data Drop_20200815 - 04 Case Information.csv`. The data covered are only cases that are updated last **August 15, 2020**, therefore the analysis are subject to changes in observations in later dates.
 
 ---
 
